@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Google Keyword Planner UI Declutterer",
+  "version": "1.0",
+  "description": "Customize and declutter the Google Keyword Planner UI",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://ads.google.com/aw/keywordplanner/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
