@@ -1,31 +1,117 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       body {
-        width: 300px;
-        padding: 10px;
+        width: 250px;
+        padding: 8px;
+        font-size: 14px;
+      }
+      .toggle-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        transition: all 0.3s ease;
+      }
+      .toggle {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 22px;
+        margin-right: 8px;
+      }
+      .toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.3s;
+        border-radius: 22px;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.3s;
+        border-radius: 50%;
+      }
+      input:checked + .slider {
+        background-color: #2196f3;
+      }
+      input:checked + .slider:before {
+        transform: translateX(18px);
       }
       label {
-        display: block;
-        margin-bottom: 10px;
+        font-size: 14px;
+        cursor: pointer;
       }
     </style>
   </head>
   <body>
-    <label>
-      <label>
-        <input type="checkbox" id="notification-bar" /> Hide notification bar
+    <h2>Display Settings</h2>
+    <div class="toggle-container">
+      <label class="toggle">
+        <input type="checkbox" id="notification-bar" />
+        <span class="slider"></span>
       </label>
-      <label> <input type="checkbox" id="app-bar" /> Hide app bar </label>
-      <input type="checkbox" id="navigation-drawer" /> Hide navigation drawer
-    </label>
-    <label> <input type="checkbox" id="tab-strip" /> Hide tab strip </label>
-    <label> <input type="checkbox" id="toolbelt" /> Hide toolbelt </label>
-    <label> <input type="checkbox" id="side-drawer" /> Hide side drawer </label>
-    <label>
-      <input type="checkbox" id="bigger-keyword-font" /> Use bigger font size
-    </label>
+      <label for="notification-bar">Hide notification bar</label>
+    </div>
+    <div class="toggle-container">
+      <label class="toggle">
+        <input type="checkbox" id="app-bar" />
+        <span class="slider"></span>
+      </label>
+      <label for="app-bar">Hide app bar</label>
+    </div>
+    <div class="toggle-container">
+      <label class="toggle">
+        <input type="checkbox" id="navigation-drawer" />
+        <span class="slider"></span>
+      </label>
+      <label for="navigation-drawer">Hide navigation drawer</label>
+    </div>
+    <div class="toggle-container">
+      <label class="toggle">
+        <input type="checkbox" id="tab-strip" />
+        <span class="slider"></span>
+      </label>
+      <label for="tab-strip">Hide tab strip</label>
+    </div>
+    <div class="toggle-container">
+      <label class="toggle">
+        <input type="checkbox" id="toolbelt" />
+        <span class="slider"></span>
+      </label>
+      <label for="toolbelt">Hide toolbelt</label>
+    </div>
+    <div class="toggle-container">
+      <label class="toggle">
+        <input type="checkbox" id="side-drawer" />
+        <span class="slider"></span>
+      </label>
+      <label for="side-drawer">Hide side drawer</label>
+    </div>
+    <div class="toggle-container">
+      <label class="toggle">
+        <input type="checkbox" id="bigger-keyword-font" />
+        <span class="slider"></span>
+      </label>
+      <label for="bigger-keyword-font">Use bigger font size</label>
+    </div>
     <script src="popup.js"></script>
   </body>
 </html>
