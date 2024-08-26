@@ -44,31 +44,33 @@ function applyChangesOnLoad() {
         console.error("Error fetching preferences:", chrome.runtime.lastError);
         return;
       }
-      applyUIChanges(result.uiPreferences || {});
+      const preferences = result.uiPreferences || {};
+      applyUIChanges(preferences);
+
+      // Set up a MutationObserver to watch for DOM changes
+      const observer = new MutationObserver(() => {
+        applyUIChanges(preferences);
+      });
+
+      // Start observing the document with the configured parameters
+      observer.observe(document.body, { childList: true, subtree: true });
     });
   } catch (error) {
     console.error("Extension context invalidated:", error);
-    // Optionally, you can remove event listeners or clean up here
   }
+}
+
+// Apply changes on page load
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", applyChangesOnLoad);
+} else {
+  applyChangesOnLoad();
 }
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  try {
-    if (request.action === "updateUI") {
-      applyChangesOnLoad();
-    }
-  } catch (error) {
-    console.error("Extension context invalidated in message listener:", error);
+  if (request.action === "updateUI") {
+    applyChangesOnLoad();
+    sendResponse({ success: true });
   }
+  return true; // Keeps the message channel open for asynchronous response
 });
-
-// Apply changes on page load
-document.addEventListener("DOMContentLoaded", applyChangesOnLoad);
-
-// Fallback: If DOMContentLoaded has already fired, run immediately
-if (
-  document.readyState === "complete" ||
-  document.readyState === "interactive"
-) {
-  applyChangesOnLoad();
-}
