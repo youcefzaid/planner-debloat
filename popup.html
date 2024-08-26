@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Keyword Planner UI Declutterer</title>
     <style>
       body {
         width: 300px;
@@ -14,20 +13,18 @@
     </style>
   </head>
   <body>
-    <h2>Toggle UI Elements</h2>
     <label>
-      <input type="checkbox" id="navigation-drawer" /> Hide Navigation Drawer
+      <label>
+        <input type="checkbox" id="notification-bar" /> Hide notification bar
+      </label>
+      <label> <input type="checkbox" id="app-bar" /> Hide app bar </label>
+      <input type="checkbox" id="navigation-drawer" /> Hide navigation drawer
     </label>
-    <label> <input type="checkbox" id="app-bar" /> Hide App Bar </label>
-    <label> <input type="checkbox" id="tab-strip" /> Hide Tab Strip </label>
-    <label> <input type="checkbox" id="toolbelt" /> Hide Toolbelt </label>
-    <label> <input type="checkbox" id="side-drawer" /> Hide Side Drawer </label>
+    <label> <input type="checkbox" id="tab-strip" /> Hide tab strip </label>
+    <label> <input type="checkbox" id="toolbelt" /> Hide toolbelt </label>
+    <label> <input type="checkbox" id="side-drawer" /> Hide side drawer </label>
     <label>
-      <input type="checkbox" id="notification-bar" /> Hide Notification Bar
-    </label>
-    <label>
-      <input type="checkbox" id="bigger-keyword-font" /> Larger Keyword Font
-      Size
+      <input type="checkbox" id="bigger-keyword-font" /> Use bigger font size
     </label>
     <script src="popup.js"></script>
   </body>

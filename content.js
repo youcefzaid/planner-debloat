@@ -43,7 +43,6 @@ function applyChangesOnLoad() {
   });
 }
 
-// Apply changes on page load
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", applyChangesOnLoad);
 } else {
@@ -55,5 +54,5 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     applyChangesOnLoad();
     sendResponse({ success: true });
   }
-  return true; // Keeps the message channel open for asynchronous response
+  return true;
 });
