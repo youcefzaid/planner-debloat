@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-  // Load saved preferences
   chrome.storage.local.get(["uiPreferences"], function (result) {
     const preferences = result.uiPreferences || {};
     checkboxes.forEach((checkbox) => {
@@ -9,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Save preferences and update UI when checkboxes are toggled
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener("change", function () {
       savePreferences();

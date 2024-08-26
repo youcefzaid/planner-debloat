@@ -31,13 +31,46 @@ function applyUIChanges(preferences) {
   }
 
   if (preferences["notification-bar"]) {
-    document.querySelector(
-      "notification-bar-host._ngcontent-awn-AWSM-0"
-    ).style.display = "none";
+    document.querySelector("notification-bar").style.display = "none";
   } else {
-    document.querySelector(
-      "notification-bar-host._ngcontent-awn-AWSM-0"
-    ).style.display = "";
+    document.querySelector("notification-bar").style.display = "";
+  }
+
+  if (preferences["bigger-keyword-font"]) {
+    const updateKeywordStyles = () => {
+      document.querySelectorAll(".keyword").forEach((keyword) => {
+        keyword.style.fontSize = "18px";
+      });
+    };
+    updateKeywordStyles();
+    // Create a MutationObserver to watch for new elements
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "childList") {
+          updateKeywordStyles();
+        }
+      });
+    });
+    // Start observing the document with the configured parameters
+    observer.observe(document.body, { childList: true, subtree: true });
+  } else {
+    const resetKeywordStyles = () => {
+      document.querySelectorAll(".keyword").forEach((keyword) => {
+        keyword.style.fontSize = "";
+        keyword.style.fontWeight = "";
+      });
+    };
+    resetKeywordStyles();
+    // Create a MutationObserver to watch for new elements
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "childList") {
+          resetKeywordStyles();
+        }
+      });
+    });
+    // Start observing the document with the configured parameters
+    observer.observe(document.body, { childList: true, subtree: true });
   }
 }
 
