@@ -6,7 +6,7 @@ A Chrome extension that allows users to debloat the Google Keyword Planner UI.
 
 You can install this extension directly from the Chrome Web Store:
 
-[Google Keyword Planner UI Customizer](https://chromewebstore.google.com/detail/jcnedbebdejdpdfknoklaoadmoggfgbh/)
+[Google Keyword Planner UI Customizer](https://chromewebstore.google.com/detail/google-keyword-planner-ui/jcnedbebdejdpdfknoklaoadmoggfgbh)
 
 Alternatively, for development purposes:
 
